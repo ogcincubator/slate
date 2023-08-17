@@ -3,6 +3,9 @@ module Multilang
     if full_lang_name
       parts = full_lang_name.split('--')
       rouge_lang_name = (parts) ? parts[0] : "" # just parts[0] here causes null ref exception when no language specified
+      if rouge_lang_name == 'jsonld'
+        rouge_lang_name = 'json'
+      end
       super(code, rouge_lang_name).sub(/highlight (#{rouge_lang_name}|plaintext)/) do |match|
         "highlight #{rouge_lang_name} tab-" + full_lang_name
       end
