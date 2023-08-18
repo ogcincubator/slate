@@ -3,7 +3,7 @@ module Multilang
     if full_lang_name
       parts = full_lang_name.split('--')
       rouge_lang_name = (parts) ? parts[0] : "" # just parts[0] here causes null ref exception when no language specified
-      if rouge_lang_name == 'jsonld'
+      if ['jsonld', 'json-ld'].include? rouge_lang_name
         rouge_lang_name = 'json'
       elsif rouge_lang_name == 'ttl'
         rouge_lang_name = 'turtle'
